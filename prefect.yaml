@@ -26,7 +26,7 @@ deployments:
   description: null
   entrypoint: flows.py:chess_pipeline
   parameters:
-    USERNAME: Larry23
+    username: ""
   work_pool:
     name: default
     work_queue_name: default

@@ -107,7 +107,7 @@ def load(csv_file):
 
 
 @flow(name="chess-pipeline")
-def chess_pipeline():
+def chess_pipeline(username):
     raw_file = extract(username)
     csv_file = transform(raw_file)
     load(csv_file)
