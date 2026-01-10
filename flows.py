@@ -6,13 +6,13 @@ import pandas as pd
 import psycopg2
 import math
 
-USERNAME = "Larry23"
+username = "Larry23"
 
 
 @task(retries=3, retry_delay_seconds=5)
-def extract(USERNAME):
+def extract(username):
     logger = get_run_logger()
-    url = f"https://lichess.org/api/games/user/{USERNAME}"
+    url = f"https://lichess.org/api/games/user/{username}"
 
     params = {
         "max": 50,
@@ -24,7 +24,7 @@ def extract(USERNAME):
         "Accept": "application/x-ndjson"
     }
 
-    logger.info(f"Downloading games for {USERNAME}")
+    logger.info(f"Downloading games for {username}")
 
     response = requests.get(url, params=params, headers=headers)
 
@@ -108,7 +108,7 @@ def load(csv_file):
 
 @flow(name="chess-pipeline")
 def chess_pipeline():
-    raw_file = extract(USERNAME)
+    raw_file = extract(username)
     csv_file = transform(raw_file)
     load(csv_file)
 
