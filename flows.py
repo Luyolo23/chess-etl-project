@@ -40,6 +40,10 @@ def transform(file_path):
 
     with open(file_path) as f:
         for line in f:
+
+            if not line:
+                continue
+
             game = json.loads(line)
 
             if game.get("source") == "friend":
@@ -58,7 +62,7 @@ def transform(file_path):
                     "black_player": black["user"]["name"],
                     "white_rating": white["rating"],
                     "black_rating": black["rating"],
-                    "winner": game["winner"],
+                    "winner": game.get("winner", "unknown"),
                     "moves_count": math.ceil(len(game.get("moves", "").split()) / 2)
                 }
 
