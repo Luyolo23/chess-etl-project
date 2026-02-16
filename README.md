@@ -1,10 +1,10 @@
-##Chess Data Pipeline##
+### Chess Data Pipeline ###
 
 This project is an end-to-end ETL pipeline that extracts chess game data from the Lichess public API, transforms it into a structured format, and loads it into a PostgreSQL database. The workflow is orchestrated using Prefect.
 
 The goal of this project was to move beyond theory and build a production-style data pipeline that works with real external data, handles failures, and is fully observable.
 
-###What This Pipeline Does###
+### What This Pipeline Does ###
 
 Extract
 Pulls chess game data for a given username from the Lichess REST API.
@@ -25,7 +25,7 @@ Inserts the cleaned data into a PostgreSQL database table.
 Orchestration
 Prefect manages task dependencies, logging, execution, and monitoring.
 
-###Architecture###
+### Architecture ###
 
 Lichess API
 ↓
@@ -37,7 +37,7 @@ Load Task (PostgreSQL)
 ↓
 Prefect Flow Orchestration
 
-###Tech Stack###
+### Tech Stack ###
 
 Python
 
@@ -51,7 +51,7 @@ REST APIs (Lichess API)
 
 Linux CLI
 
-###Project Structure###
+### Project Structure ###
 chess-etl-project/
 │
 ├── flows.py          # Prefect flow definition
@@ -60,7 +60,7 @@ chess-etl-project/
 ├── load.py           # PostgreSQL loading logic
 ├── requirements.txt
 └── README.md
-###How to Run the Project###
+### How to Run the Project ###
 
 Create and activate a virtual environment
 
@@ -86,7 +86,7 @@ prefect deployment run chess-pipeline/daily-chess --params '{"username":"YOUR_US
 Open the Prefect UI
 
 http://127.0.0.1:4200
-###Key Concepts Practiced###
+### Key Concepts Practiced ###
 
 External API integration (Lichess)
 
@@ -102,7 +102,7 @@ Task-level logging and monitoring
 
 Debugging real-world data inconsistencies
 
-###Challenges Faced###
+### Challenges Faced ###
 
 Handling inconsistent API responses
 
@@ -112,7 +112,7 @@ Structuring the project with clear separation between orchestration and business
 
 Configuring and managing Prefect workers locally
 
-###Future Improvements###
+### Future Improvements ###
 
 Add retry logic with exponential backoff for API calls
 
