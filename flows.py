@@ -6,7 +6,7 @@ import pandas as pd
 import psycopg2
 import math
 
-username = "Larry23"
+username = "EricRosen"
 
 
 @task(retries=3, retry_delay_seconds=5)
@@ -111,7 +111,7 @@ def load(csv_file):
 
 
 @flow(name="chess-pipeline")
-def chess_pipeline(username):
+def chess_pipeline():
     raw_file = extract(username)
     csv_file = transform(raw_file)
     load(csv_file)
